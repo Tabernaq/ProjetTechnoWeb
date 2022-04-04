@@ -1,0 +1,20 @@
+{% extends 'Layouts/base.html.twig' %}
+{% block titre_principal %}
+    goat/view
+{% endblock %}
+
+{% block content %}
+    {% if goat is null %}
+        <p>La chèvre {{ id }} n'existe pas</p>
+    {% else %}
+        <ul>
+            {% set URLList = path('goat_list') %}
+            <li>id : {{ goat.id }}</li>
+            <li>race : {{ goat.race }}</li>
+            <li>price : {{ goat.price }}</li>
+            <li>stock : {{ goat.stock }}</li>
+        </ul>
+    {% endif %}
+
+    <p>Pour voir les autres chèvres, cliquez <a href="{{ URLList }}">ici</a> </p>
+{% endblock %}
