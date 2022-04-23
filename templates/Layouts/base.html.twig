@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+
+        {% block css %}
+            <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        {% endblock %}
+
+        {% block javascript %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div id="flash">
+                {% if app.session.flashbag.peekAll|length > 0 %}
+                <h3>Flash</h3>
+                <ul>
+                    {% for msg in app.session.flashBag.get('info') %}
+                        <li>{{ msg }}</li>
+                    {% endfor %}
+                </ul>
+                {%endif%}
+            </div>
+
+            <div id="menu">
+                {% include 'Layouts/menu.html.twig' %}
+            </div>
+
+            <div id="header">
+                {% include 'Layouts/header.html.twig' %}
+            </div>
+
+            <div id="titre">
+                <h1>{% block titre %}{% endblock %}</h1>
+            </div>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+
+            <div id="footer">
+            {% include 'Layouts/footer.html.twig' %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

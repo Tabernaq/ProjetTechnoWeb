@@ -1,0 +1,19 @@
+{% extends "Layouts/base.html.twig" %}
+
+{% block title %}
+    Création de votre compte client
+{% endblock %}
+
+{% block titre %}
+    Formulaire de création de compte
+{% endblock %}
+
+{% block content %}
+    {{ form_start(myform) }}
+
+    {{ form_errors(myform) }}
+
+    {{ form_rest(myform) }}
+
+    {{ form_end(myform) }}
+{% endblock %}

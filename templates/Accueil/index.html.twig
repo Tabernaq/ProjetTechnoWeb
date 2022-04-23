@@ -1,0 +1,29 @@
+{% extends "Layouts/base.html.twig" %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block titre %}
+    Accueil
+{% endblock %}
+
+{% block content %}
+    <p>Bienvenue sur Goatsy, un site de vente de chèvres créé par Tanguy SMODIS et Naïm TARZI.</p>
+    <p>Vous êtes connecté en tant que
+        {% if not is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+        personne anonyme
+        {% else %}
+            {% if is_granted('ROLE_CLIENT')%}
+                client
+            {%endif%}
+            {% if is_granted('ROLE_ADMIN')%}
+                administrateur
+            {%endif%}
+            {% if is_granted('ROLE_SUPERADMIN')%}
+                super-administrateur
+            {%endif%}
+        {%endif%}
+        .
+    </p>
+{% endblock %}

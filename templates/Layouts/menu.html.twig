@@ -1,0 +1,24 @@
+{% set URLList = path('goat_list') %}
+{% set URLAdd = path('goat_add') %}
+{% set URLAuth = path('security_login') %}
+{% set URLDeco = path('security_logout') %}
+{% set URLCompteCreation = path('security_compte_creation') %}
+
+
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+        {#TODO : afficher le panier#}
+{%endif%}
+
+<table>
+        <tr>
+                <td><a href={{ URLAuth }}>Se connecter</a></td>
+                <td><a href={{ URLDeco }}>Se déconnecter</a></td>
+                <td><a href={{ URLCompteCreation }}>Créer son compte</a></td>
+                <td><a href={{ URLList }}>Liste des Chèvres</a></td>
+                <td><a href={{ URLAdd }}>Ajouter une race de Chèvre</a></td>
+
+                {% if is_granted('ROLE_ADMIN')%}
+                        <td><a href="https://fr.wikipedia.org/wiki/The_Truman_Show">Le Truman Show (pour les admins)</a> </td>
+                {%endif%}
+        </tr>
+</table>

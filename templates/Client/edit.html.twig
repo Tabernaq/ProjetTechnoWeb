@@ -1,0 +1,23 @@
+{% extends "Layouts/base.html.twig" %}
+
+{% block title %}
+    Modification de votre compte client
+{% endblock %}
+
+{% block titre %}
+    Formulaire de modification de compte
+{% endblock %}
+
+{% block content %}
+
+    {{ form_row(myform.login) }}
+
+    {{ form_row(myform.password) }}
+
+    {{ form_row(myform.name) }}
+
+    {{ form_row(myform.surname) }}
+
+    {{ form_row(myform.date_birth) }}
+
+{% endblock %}

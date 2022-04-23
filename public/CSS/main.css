@@ -1,0 +1,198 @@
+body{
+    background-color: antiquewhite; /*Change la couleur du fond*/
+}
+
+h1::first-line{
+    text-decoration: underline; /*Souligne la première ligne des titres de niveau 1*/
+}
+
+.hidden{
+    display : none; /*Permet de cacher les listes et ce qu'elles contiennent quand on clique dessus en lien avec hideContent()*/
+}
+
+*[onclick]:hover{
+    color: rebeccapurple !important; /*Change la couleur des éléments possédant un attribut onclick, il est important car sinon il ne fonctionne pas avec le style alternatif*/
+}
+
+table{
+    border-style: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tbody td{
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 1px 8px 1px 8px;
+    margin: 5px;
+    background-color: navajowhite;
+}
+
+table tbody th{
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 1px 8px 1px 8px;
+    margin: 5px;
+    background-color: burlywood;
+}
+
+caption{/*Affecte la classe caption*/
+    font-size: 25px;  /*Augmente la taille de la police du titre du tableau*/
+    text-decoration: underline;  /*Souligne le titre du tableau*/
+    padding-bottom: 10px;  /*Crée une marge de 10 pixel en bas du titre du tableau*/
+}
+
+.underline{
+    text-decoration: underline;
+    padding-right: 5px;
+}
+
+.big_underline{
+    text-decoration: underline;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+a {
+    color: mediumblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: mediumpurple; !important;
+}
+
+.side_by_side{
+    display: flex;
+    width: 100%;
+}
+.side_by_side_img{
+    flex: 50%;
+    padding: 5px;
+    alignment: center;
+}
+
+.boxed {
+    border: 1px dashed black ;
+}
+
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 200px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: burlywood;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 10px; /* Place content Xpx from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu  */
+
+
+
+.sidenav a:hover {
+    color: rebeccapurple; !important;
+}
+
+.sidenav_expand{
+    padding-left: 0px;
+    font-weight: bolder;
+}
+
+span.index a{
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bolder;
+    color: white;
+    display: block;
+}
+
+span.partie{
+    text-decoration: none;
+    font-size: 27px;
+    font-weight: bolder;
+    display: block;
+}
+
+span.dossier {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+span.sous-dossier {
+    text-decoration: none;
+    font-size: 17px;
+}
+
+span.sous-dossier a{
+    color: black;
+}
+
+
+span.little a{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    display: block;
+}
+
+span.medium a{
+    text-decoration: none;
+    font-size: 17px;
+    color: white;
+    display: block;
+}
+
+span.nav_ajout a{
+    margin: 3px;
+    text-decoration: none;
+    font-size: 18px;
+    color: darkred;
+    display: block;
+    position: absolute;
+}
+
+ul.sidenav{
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 5px;
+}
+
+ul.sidenav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 3px 0 3px 10px;
+}
+
+
+
+/* Style page content */
+.main {
+ /* Same as the width of the sidebar */
+    padding: 0 5px;
+}
+
+
+.openbtn {
+    float: right;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    font-size: 12px;
+    color: black;
+}
+
+a>img:hover{
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+

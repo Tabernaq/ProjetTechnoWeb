@@ -1,0 +1,19 @@
+{% extends "Layouts/base.html.twig" %}
+
+{% block title %}
+    Chevre/ajout
+{% endblock %}
+
+{% block titre %}
+    Ajout d'une chèvre
+{% endblock %}
+
+{% block content %}
+    {{ form_start(myform) }}
+
+    {{ form_errors(myform) }}
+
+    {{ form_rest(myform) }}
+
+    {{ form_end(myform) }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'Layouts/base.html.twig' %}
+{% block title %}
+    Goat/list
+{% endblock %}
+{% block titre%}
+Liste de Chèvres
+{% endblock %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>id</th>
+            <th>race</th>
+            <th>price</th>
+            <th>stock</th>
+        </tr>
+        {% for goat in goats %}
+            <tr>
+                {% set URLView = path('goat_view',{'id' : goat.id}) %}
+                {% set URLDel = path('goat_delete',{'id' : goat.id}) %}
+                <td> {{ goat.id }} </td>
+                <td> <a href="{{ URLView }}">{{ goat.race }}</a> </td>
+                <td> {{ goat.price }} </td>
+                <td> {{ goat.stock }} </td>
+                <td> Quantité :
+                            <select id="choix">
+                            {% for numero in 0..goat.stock %}
+                                <option value="{{ numero }}">{{ numero }}</option>
+                            {% endfor %}
+                            </select> </td>
+                <td> <a href="{{ URLDel }}">Supprimer</a> </td>
+            </tr>
+        {% endfor %}
+        {% set URLAdd = path('goat_add') %}
+        <a href="{{ URLAdd }}">Ajouter une Chèvre</a>
+    </table>
+{% endblock %}
