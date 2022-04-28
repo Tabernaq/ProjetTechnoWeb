@@ -1,3 +1,9 @@
-<p>
-    Ceci est le bandeau d'entête.
-</p>
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+    {% if is_granted("ROLE_ADMIN")%}
+        <img src="{{asset('Pictures/chevre_admin.png')}}" alt="image pour admin" height="256"/>
+        {%else %}
+            <img src="{{asset('Pictures/chevre_auth.png')}}" alt="image pour personne autenthiée" height="256"/>
+    {%endif%}
+{%else %}
+    <img src="{{asset('Pictures/chevre_non_auth.png')}}" alt="image pour personne non-autenthiée" height="256"/>
+{%endif%}

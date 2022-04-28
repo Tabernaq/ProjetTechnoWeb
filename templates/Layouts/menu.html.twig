@@ -1,24 +1,67 @@
-{% set URLList = path('goat_list') %}
-{% set URLAdd = path('goat_add') %}
+{# Liens pour utilisateurs non-authentifiés #}
+{% set URLAccueil = path('accueil_index') %}
 {% set URLAuth = path('security_login') %}
-{% set URLDeco = path('security_logout') %}
 {% set URLCompteCreation = path('security_compte_creation') %}
 
+{# Liens pour utilisateurs authentifiés #}
+{% set URLDeco = path('security_logout') %}
+{% set URLCompteEdit = path('security_compte_edit') %}
 
-{% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
-        {#TODO : afficher le panier#}
-{%endif%}
+{# Liens pour clients #}
+{% set URLList = path('goat_list') %}
+{% set URLGestionPanier = path('panier_view_self') %}
 
-<table>
-        <tr>
-                <td><a href={{ URLAuth }}>Se connecter</a></td>
-                <td><a href={{ URLDeco }}>Se déconnecter</a></td>
-                <td><a href={{ URLCompteCreation }}>Créer son compte</a></td>
-                <td><a href={{ URLList }}>Liste des Chèvres</a></td>
-                <td><a href={{ URLAdd }}>Ajouter une race de Chèvre</a></td>
+{# Liens pour admins #}
+{% set URLGestionUtilisateur = path('security_gestion_utilisateur_list') %}
+{% set URLAjoutProduit = path('goat_add') %}
 
-                {% if is_granted('ROLE_ADMIN')%}
-                        <td><a href="https://fr.wikipedia.org/wiki/The_Truman_Show">Le Truman Show (pour les admins)</a> </td>
-                {%endif%}
-        </tr>
-</table>
+{# Liens pour super-admins #}
+{% set URLCreationAdmin = path('security_gestion_admin_ajout') %}
+
+<ul class="sidenav">
+        <li>
+                <ul>
+                    <li><a href={{ URLAccueil }}>Page d'accueil</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                            <li><a href={{ URLDeco }}>Se déconnecter</a></li>
+                            <li><a href={{ URLCompteEdit }}>Modifier son compte</a></li>
+
+                    {% else %}
+                            <li><a href={{ URLAuth }}>Se connecter</a></li>
+                            <li><a href={{ URLCompteCreation }}>Créer son compte</a></li>
+                    {%endif%}
+                </ul>
+        </li>
+        {% if is_granted('ROLE_USER')%}
+                <li>
+                        <ul>
+                                <li><a href={{ URLList }}>Liste des Chèvres</a></li>
+                                <li><a href={{ URLGestionPanier }}>Voir son panier</a></li>
+                        </ul>
+                </li>
+        {%endif%}
+
+        {% if is_granted('ROLE_ADMIN')%}
+                <li>
+                        <ul>
+                                <li><a href={{ URLAjoutProduit }}>Ajouter une race de Chèvre</a></li>
+                                <li><a href={{ URLGestionUtilisateur }}>Gérer les utilisateurs</a></li>
+                                <li><a href="https://fr.wikipedia.org/wiki/The_Truman_Show">Le Truman Show</a> </li>
+                        </ul>
+                </li>
+        {%endif%}
+
+        {% if is_granted('ROLE_SUPERADMIN')%}
+                <li>
+                        <ul>
+                                <li><a href={{ URLCreationAdmin }}>Ajouter un administrateur</a></li>
+                        </ul>
+                </li>
+        {%endif%}
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and is_granted('ROLE_USER')%}
+        <li>{{ render(controller('App\\Controller\\PanierController::viewMenuAction')) }}</li>
+        {%endif%}
+</ul>
+
+

@@ -10,14 +10,12 @@
 
 {% block content %}
 
-    {{ form_row(myform.login) }}
+    {{ form_start(myform) }}
 
-    {{ form_row(myform.password) }}
+    {{ form_errors(myform) }}
 
-    {{ form_row(myform.name) }}
+    {{ form_rest(myform) }}
 
-    {{ form_row(myform.surname) }}
-
-    {{ form_row(myform.date_birth) }}
+    {{ form_end(myform) }}
 
 {% endblock %}

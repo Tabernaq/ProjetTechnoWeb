@@ -35,11 +35,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/$, roles: PUBLIC_ACCESS }
-         - { path: ^/security/login, roles: PUBLIC_ACCESS }
-         - { path: ^/security/logout, roles: PUBLIC_ACCESS }
-         - { path: ^/security/compte/creation$, roles: PUBLIC_ACCESS }
-         - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/$, roles: PUBLIC_ACCESS }
+        - { path: ^/security/login, roles: PUBLIC_ACCESS }
+        - { path: ^/security/logout, roles: PUBLIC_ACCESS }
+        - { path: ^/security/compte/creation$, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
 
 when@test:
     security:

@@ -7,6 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Table(name: "im22_UserV2")]
+#[ORM\UniqueConstraint(
+    name: 'name_surname_couple_unique',
+    columns: ['name', 'surname']
+)]
 #[ORM\Entity(repositoryClass: UserV2Repository::class)]
 class UserV2 implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -32,6 +36,16 @@ class UserV2 implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'date')]
     private $date_birth;
+
+    #[ORM\OneToOne(mappedBy: 'client', targetEntity: Panier::class, cascade: ['persist', 'remove'])]
+    private $panier;
+
+    //UserV2 constructor
+    public function __construct()
+    {
+        $this->panier=new Panier();
+        $this->panier->setClient($this);
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +168,23 @@ class UserV2 implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDateBirth(\DateTimeInterface $date_birth): self
     {
         $this->date_birth = $date_birth;
+
+        return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(Panier $panier): self
+    {
+        // set the owning side of the relation if necessary
+        if ($panier->getClient() !== $this) {
+            $panier->setClient($this);
+        }
+
+        $this->panier = $panier;
 
         return $this;
     }

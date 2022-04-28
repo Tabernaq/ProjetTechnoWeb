@@ -1,0 +1,43 @@
+{% extends 'Layouts/base.html.twig' %}
+{% block css %}
+    <link href="{{ asset('css/vente.css') }}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    Liste des Chèvres
+{% endblock %}
+{% block titre%}
+Liste des Chèvres
+{% endblock %}
+
+{% block content %}
+    {% if is_granted("ROLE_ADMIN")%}
+        {% set URLAdd = path('goat_add') %}
+        <a href="{{ URLAdd }}">Ajouter une Chèvre</a>
+    {%endif%}
+    <table>
+        <tr>
+            <th>id</th>
+            <th>race</th>
+            <th>price</th>
+            <th>stock</th>
+        </tr>
+        {% for goat in goats %}
+            <tr>
+                <td> {{ goat.id }} </td>
+                {% set URLView = path('goat_view',{'id' : goat.id}) %}
+                <td> <a href="{{ URLView }}">{{ goat.race }}</a> </td>
+                <td> {{ goat.price }} </td>
+                <td> {{ goat.stock }} </td>
+
+                {% if is_granted("ROLE_ADMIN")%}
+                    {% set URLDel = path('goat_delete',{'id' : goat.id}) %}
+                    <td> <a href="{{ URLDel }}">Supprimer l'enregistrement</a> </td>
+                {%endif%}
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% if is_granted("ROLE_USER")%}
+        <td>{{ render(controller('App\\Controller\\GoatController::achatAction')) }}</td>
+    {%endif%}
+{% endblock %}

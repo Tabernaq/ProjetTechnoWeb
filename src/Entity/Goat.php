@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GoatRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 #[ORM\Table(name: "im22_Goat")]
 #[ORM\Entity(repositoryClass: GoatRepository::class)]
@@ -28,6 +30,7 @@ class Goat
     public function __construct()
     {
         $this->Stock=0;
+        $this->paniers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +70,20 @@ class Goat
     public function setStock(int $Stock): self
     {
         $this->Stock = $Stock;
+
+        return $this;
+    }
+
+    public function addStock(int $quantity): self
+    {
+        $this->Stock +=$quantity;
+
+        return $this;
+    }
+
+    public function remStock(int $quantity): self
+    {
+        $this->Stock -=$quantity;
 
         return $this;
     }

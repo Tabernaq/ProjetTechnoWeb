@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <p>Bienvenue sur Goatsy, un site de vente de chèvres créé par Tanguy SMODIS et Naïm TARZI.</p>
+    <p>Bienvenue sur Perigord Project, un site de vente de chèvres créé par Tanguy SMODIS et Naïm TARZI.</p>
     <p>Vous êtes connecté en tant que
         {% if not is_granted('IS_AUTHENTICATED_REMEMBERED')%}
         personne anonyme
@@ -24,6 +24,5 @@
                 super-administrateur
             {%endif%}
         {%endif%}
-        .
     </p>
 {% endblock %}

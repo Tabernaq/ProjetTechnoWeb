@@ -1,0 +1,16 @@
+<h2>Panier de {{client.login}}</h2>
+{%if PGs != []%}
+<ul>
+    {% for pg in PGs%}
+        <li>
+            <ul>
+                <li>Race : {{pg.goat.Race}}</li>
+                <li>Prix par unité : {{ pg.goat.price }}</li>
+                <li>Quantité : {{ pg.quantite }}</li>
+                <li>Prix du groupe : {{ pg.goat.price*pg.quantite}}</li>
+            </ul>
+        </li>
+    {%endfor%}
+</ul>
+{%endif%}
+<p>Prix total : {{ panier.totalprice }}</p>

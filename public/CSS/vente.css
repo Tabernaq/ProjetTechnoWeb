@@ -1,0 +1,21 @@
+table{
+    border-style: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tbody td{
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 1px 8px 1px 8px;
+    margin: 5px;
+    background-color: navajowhite;
+}
+
+table tbody th{
+    border-style: none;
+    border-bottom: 1px solid black;
+    padding: 1px 8px 1px 8px;
+    margin: 5px;
+    background-color: burlywood;
+}
